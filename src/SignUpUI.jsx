@@ -90,6 +90,19 @@ export default function SignUpUI() {
                 />
               </div>
 
+              <div>
+              <span className="text-gray-600">
+                By signing up, you agree to the{" "}
+                <a href="https://blog.tophhie.cloud/atproto-tos" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  Terms of Service
+                </a>{" "}
+                and{" "}
+                <a href="https://blog.tophhie.cloud/atproto-privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  Privacy Policy
+                </a>.
+              </span>
+              </div>
+
               <button
                 type="submit"
                 className="w-full py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
