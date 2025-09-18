@@ -6,7 +6,7 @@ export default function SignUpUI() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
-  const [isSignedUp, setIsSignedUp] = useState(true);
+  const [isSignedUp, setIsSignedUp] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
