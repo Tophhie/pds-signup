@@ -52,16 +52,16 @@ export default function SignUpUI() {
           <>
             <form className="space-y-4" onSubmit={handleSubmit}>
               {/* Username + suffix */}
-              <div className="flex rounded-lg shadow-sm border border-gray-300">
+              <div className="flex w-full items-stretch rounded-lg border border-gray-300 overflow-hidden">
                 <input
+                  id="handle"
                   type="text"
                   placeholder="Username"
                   value={handle}
-                  onChange={(e) => setHandle(e.target.value)}
-                  className="flex-1 px-4 py-2 bg-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="flex-1 min-w-0 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-[16px]" // prevent iOS zoom
                   required
                 />
-                <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-r-lg border-l border-gray-300 select-none">
+                <span className="flex-shrink-0 whitespace-nowrap px-3 py-2 bg-gray-100 text-gray-700 border-l border-gray-300">
                   .tophhie.social
                 </span>
               </div>

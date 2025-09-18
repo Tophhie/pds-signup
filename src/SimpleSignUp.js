@@ -2,7 +2,7 @@ import { AtpAgent } from '@atproto/api';
 
 class SimpleSignUp {
   constructor() {
-    this.agent = new AtpAgent({ service: 'https://pds.tophhie.cloud' });
+    this.agent = new AtpAgent({ service: 'https://tophhie.social' });
   }
 
   async signUp(handle, email, password, statusUpdateHandler) {
