@@ -23,7 +23,7 @@ export default function SignUpUI() {
       setIsSignedUp(true);
     } catch (err) {
       console.error(err);
-      setStatus("Sign-up failed. Please try again.");
+      setStatus(`Sign-up failed. Please try again. ${err}`);
       setIsSignedUp(false);
     }
   };
