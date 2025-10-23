@@ -58,6 +58,7 @@ export default function SignUpUI() {
                   type="text"
                   placeholder="Username"
                   value={handle}
+                  onChange={(e) => setHandle(e.target.value)}
                   className="flex-1 min-w-0 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-[16px]" // prevent iOS zoom
                   required
                 />
