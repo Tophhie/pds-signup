@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SimpleSignUp } from "./SimpleSignUp"; // if default export, use: import SimpleSignUp from "./SimpleSignUp";
+import { Turnstile } from "react-turnstile";
 
 export default function SignUpUI() {
   const [handle, setHandle] = useState("");
@@ -7,6 +8,7 @@ export default function SignUpUI() {
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
   const [isSignedUp, setIsSignedUp] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,9 +19,15 @@ export default function SignUpUI() {
       return;
     }
 
+    if (!turnstileToken) {
+      setStatus("Please complete the CAPTCHA to continue.");
+      return;
+    }
+
     try {
       const signUp = new SimpleSignUp();
-      await signUp.signUp(handle.toLowerCase(), email, password, setStatus);
+      // pass the Turnstile token as an optional parameter; server-side verification is required
+      await signUp.signUp(handle.toLowerCase(), email, password, turnstileToken, setStatus);
       setIsSignedUp(true);
     } catch (err) {
       console.error(err);
@@ -103,10 +111,20 @@ export default function SignUpUI() {
                 </a>.
               </span>
               </div>
-
+            <div className="pt-3">
+              <Turnstile
+                sitekey="0x4AAAAAACb7t8nNLqp1dWJ9"
+                onverify={(token) => {
+                  setTurnstileToken(token);
+                  setStatus("");
+                }}
+                onexpire={() => setTurnstileToken(null)}
+              />
+            </div>
               <button
                 type="submit"
                 className="w-full py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                disabled={!turnstileToken}
               >
                 Create account
               </button>
