@@ -114,6 +114,7 @@ export default function SignUpUI() {
             <div className="pt-3">
               <Turnstile
                 sitekey="0x4AAAAAACb7t8nNLqp1dWJ9"
+                theme="light"
                 onVerify={(token) => {
                   setTurnstileToken(token);
                   setStatus("");
